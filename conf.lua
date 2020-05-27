@@ -1,3 +1,3 @@
 function love.conf(t)
-    t.console = true
+    t.window.title = "Text Based Sokoban"
 end

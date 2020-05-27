@@ -25,11 +25,17 @@ function love.load()
 
         see=look,
         look=look,
+        find=look,
         debug=toggleDebug,
 
         help="Try entering a direction or finding out more about your surroundings.",
         despair="Yes.",
         push="Using state of the art technology, pushing happens automatically when moving in this game. Wow!",
+        pull="Surely you jest.",
+        test="Test successful. Good job.",
+        punch="This isn't that kind of game.",
+        fight="With what? There's nothing.",
+        fuck="YOU LOSE.",
     }
 
     mapStrings = {
@@ -60,13 +66,13 @@ function love.load()
     end
 
     debug = false
-    message("You find yourself in some dank warehouse. The walls are suspiciously grid-aligned. There's boxes all around and switches to push them on.")
+    message("You find yourself in some dank warehouse. The walls are suspiciously grid-aligned. There's boxes all around and switches to push them on")
 end
 
 function love.draw()
-    love.graphics.print(">" .. entry, 0, h-lh)
+    love.graphics.print(">" .. entry, 0, h-lh-20)
 
-    local y = h-lh-3
+    local y = h-lh-40
     for i = #history, math.max(1, #history-(h/lh-1)), -1 do
         local _, wrappedText = font:getWrap(history[i], w)
         local th = #wrappedText*lh
