@@ -26,6 +26,7 @@ function love.load()
         see=look,
         look=look,
         find=look,
+        examine=look,
         debug=toggleDebug,
 
         help="Try entering a direction or finding out more about your surroundings.",
@@ -36,6 +37,13 @@ function love.load()
         punch="This isn't that kind of game.",
         fight="With what? There's nothing.",
         fuck="YOU LOSE.",
+        undo="You wish.",
+        redo="This game has no undo, so why would there be a redo?",
+        restart="Close the game and reopen it.",
+        analyze="You analyze everything. The walls are made of bricks, the boxes are wood, the switches are the pushy kind and not the Nintendo kind.",
+        die="There is no escape.",
+        exit="Sokoban levels have no exit.",
+        inventory="Your inventory is empty."
     }
 
     mapStrings = {
@@ -101,7 +109,7 @@ end
 
 function love.keypressed(key)
     if key == "backspace" then
-        entry = string.sub(entry, 1, -2)
+        entry = entry:gsub("[%z\1-\127\194-\244][\128-\191]*$", "")
     end
 
     if key == "return" then
