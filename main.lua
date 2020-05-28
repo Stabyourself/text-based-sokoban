@@ -77,7 +77,7 @@ function love.load()
     end
 
     debug = false
-    message("You find yourself in some dank warehouse. The walls are suspiciously grid-aligned. There's boxes all around and switches to push them on")
+    message("You find yourself in some dank warehouse. The walls are suspiciously grid-aligned. There's boxes all around and switches to push them on.")
 end
 
 function love.draw()
@@ -208,7 +208,6 @@ function move(x, y)
         if map[newBoxX][newBoxY] == "S" then
             map[newBoxX][newBoxY] = "G"
             message("You pushed the box. You hear a click.")
-            checkwin()
         elseif map[newBoxX][newBoxY] == " " then
             map[newBoxX][newBoxY] = "B"
             message("You pushed the box.")
@@ -225,6 +224,8 @@ function move(x, y)
 
     playerX = newX
     playerY = newY
+
+    checkwin()
 end
 
 function checkwin()
