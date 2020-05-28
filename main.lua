@@ -47,10 +47,13 @@ function love.load()
     }
 
     mapStrings = {
-        "######",
-        "#P   #",
-        "#  BS#",
-        "######"
+        " #####",
+        " #SS #",
+        "###  #",
+        "# B  #",
+        "# B ##",
+        "#P  # ",
+        "##### ",
     }
 
     map = {}
@@ -126,17 +129,19 @@ function parseEntry(input)
 
     isolatedInput = split(input)[1]
 
-    local cmd = cmdlist[string.lower(isolatedInput)]
+    if isolatedInput then
+        local cmd = cmdlist[string.lower(isolatedInput)]
 
-    if cmd then
-        if type(cmd) == "function" then
-            cmd()
+        if cmd then
+            if type(cmd) == "function" then
+                cmd()
 
-        elseif type(cmd) == "string" then
-            message(cmd)
+            elseif type(cmd) == "string" then
+                message(cmd)
+            end
+        else
+            message("I don't know how to " .. input .. ".")
         end
-    else
-        message("I don't know how to " .. input .. ".")
     end
 
     entry = ""
